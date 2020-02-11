@@ -53,8 +53,8 @@ fun main() {
 		}
 	}
 	println("break while")
-	while (pin1.isLow); // B地点検知までするまで捕まえる
-	println("pin1 is Low")
+	while (pin1.isLow)Thread.sleep(50) // B地点検知までするまで捕まえる
+	println("pin1 is HIGH")
 	udpToMusic.send(musicServerIP, portToMusic, "st".toByteArray())
 	println("finish")
 	arduino.closeConnection()
