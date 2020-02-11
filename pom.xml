@@ -53,11 +53,9 @@
             <version>[2.0.0,3.0.0)</version>
         </dependency>
         <dependency>
-            <groupId>arduino</groupId>
+            <groupId>saba.arduino</groupId>
             <artifactId>arduino</artifactId>
             <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/src/main/kotlin/saba/prc/rasp/arduino.jar</systemPath>
         </dependency>
     </dependencies>
 

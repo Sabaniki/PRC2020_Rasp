@@ -48,15 +48,17 @@ class UdpConnection(private val bufferSize: Int, val finishing: String) {
 	
 	fun send(ip: String, port: Int, SendData: ByteArray) {
 		GlobalScope.launch {
-			DatagramSocket(port).use { socket ->
-				val packet: DatagramPacket?
-				try {
-					val address = Inet4Address.getByName(ip)
-					packet = DatagramPacket(SendData, SendData.size, address, port)
-					socket.send(packet)
-				}
-				catch (e: Exception) {
-					printException(e)
+			withContext(Dispatchers.IO) {
+				DatagramSocket(port).use { socket ->
+					val packet: DatagramPacket?
+					try {
+						val address = Inet4Address.getByName(ip)
+						packet = DatagramPacket(SendData, SendData.size, address, port)
+						socket.send(packet)
+					}
+					catch (e: Exception) {
+						printException(e)
+					}
 				}
 			}
 		}
